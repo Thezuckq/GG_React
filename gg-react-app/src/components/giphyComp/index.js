@@ -1,25 +1,18 @@
 import './index.css';
+import data from '../../data/index';
 
 const GiphyComp = () => {
-    const gif = {
-        id: '4HrBfVJJveBNS9ytSk',
-        title: 'Nintendo Plotting GIF by Gaming GIFs',
-        uploadedDate: '2018-04-03 15:21:50',
-        url: 'https://media4.giphy.com/media/4HrBfVJJveBNS9ytSk/200w.gif?cid=cb3f2bebpuo6jj0g5f9gfibjre2zzbb4yb1cfshtplanlrpw&rid=200w.gif&ct=g',
-        webp: 'https://media4.giphy.com/media/4HrBfVJJveBNS9ytSk/giphy.webp?cid=cb3f2bebpuo6jj0g5f9gfibjre2zzbb4yb1cfshtplanlrpw&rid=giphy.webp&ct=g',
-      }
-
+    const renderGifs = data =>
+        data
+          .filter(item => item.rating === 'g')
+          .map(item => 
+            <li key={item.id}>
+                <h2>{item.title}</h2>
+                <img src={item.url} alt={item.title}/>
+            </li>);
     return (
         <div>
-            <h1>Test Giphy on React App</h1>
-            <form>
-                <input type="text"/>
-                <button type="submit" className="button">Submit</button>
-            </form>
-            <br/>
-            <img src={gif.url} alt="giphy"/>
-            <p>{gif.title}</p>
-            <p>{gif.uploadedDate}</p>
+            <ul>{renderGifs(data)}</ul>
         </div>
     );
 };
