@@ -1,4 +1,4 @@
-const index = (props) => {
+const inputComp = (props) => {
   return(
     <input
       value={props.value}
@@ -9,4 +9,4 @@ const index = (props) => {
   );
 };
 
-export default index;
+export default inputComp;
